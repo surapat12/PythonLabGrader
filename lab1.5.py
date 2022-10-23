@@ -1,51 +1,26 @@
-# week 1
-print('*** Fun with countdown ***')
-ls = [int(i) for i in input('Enter List : ').split()]
-totalList = []
-totalGood = []
-positionList = []
-switch = True
-con = False
-count = 0
-#print(len(ls))
-for i in range(len(ls)):
-    goodList = []
-    #print('loop = ', i)
-    #print(switch)
-    if ls[i] <= 0:
-        continue
-    if ls[i] == 1 and switch == True:
-        positionList.append(i)
-        count += 1
-        #print(positionList)
-        goodList.append(ls[i])
-        totalGood.append(goodList)
-        positionList.clear()
-        switch = True
-        continue
-    if i+1 == len(ls):
-        break
-    else:
-        if (ls[i + 1] == 1 and ls[i] != 1) and (con == True or switch == True):
-            positionList.append(i)
-            positionList.append(i+1)
-            count += 1
-            #print(positionList)
-            for i in positionList:
-                goodList.append(ls[i])
-            totalGood.append(goodList)
-            positionList.clear()
-            switch = False
-            continue
-        if ls[i]-ls[i+1] == 1:
-            positionList.append(i)
-            switch = False
-            con = True
+myInput = int(input("Enter Input : "))
+size = 4 + 2*myInput
+for i in range(size//2,0,-1):
+    for j in range(1,size+1,1):
+        if(j<i and j<=(size//2)):
+            print(".",end="")
+        elif(j<=(size//2)):
+            print("#",end="")
+        elif(j>=(size//2) and (i==size//2 or i==1 or j==(size//2)+1 or j==size)):
+            print("+",end="")
         else:
-            positionList.clear()
-            switch = True
-            con = False
-
-totalList.append(count)
-totalList.append(totalGood)
-print(totalList)
+            print("#",end="")
+    print("")
+for i in range (1,(size//2)+1,1):
+    for j in range(1,size+1,1):
+        if(j<=size//2):
+            if((i==1 or i==size//2 or j==1 or j==size//2)):
+                print("#",end="")
+            else:
+                print("+",end="")
+        if(j> size//2):
+            if((j-(size//2))+i-1 > (size//2)):
+                print(".",end="")
+            else:
+                print("+",end="")
+    print("")
